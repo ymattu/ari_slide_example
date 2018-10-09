@@ -1,0 +1,35 @@
+---
+title: "R で音声入りのスライドを作る"
+author: "@y__mattu"
+output:
+  xaringan::moon_reader:
+    css: "for_xaringan.css"
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# セットアップ
+### パッケージ
+```{r eval=FALSE}
+library(ari)
+```
+
+### 環境変数
+```{r eval=FALSE}
+Sys.setenv("AWS_ACCESS_KEY_ID" = "****",
+          "AWS_SECRET_ACCESS_KEY" = "****",
+          "AWS_DEFAULT_REGION" = "ap-northeast-1")
+```
+
+---
+# ビデオを作成
+### スライドと原稿を指定し、実行
+```{r eval=FALSE}
+ari_narrate(script = "genkou.md",
+            slides = "slide.html",
+            voice = "Takumi",
+            output = "video.mp4",
+            capture_method = "iterative")
+```
